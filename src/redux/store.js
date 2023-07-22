@@ -1,6 +1,12 @@
 import { createStore } from 'redux';
+import { devToolsEnhancer } from '@redux-devtools/extension';
 
-const rootReducer = (state, action) => {
+const initialState = {
+  contacts: [],
+  filter: '',
+};
+
+const rootReducer = (state = initialState, action) => {
   return state;
 };
 
