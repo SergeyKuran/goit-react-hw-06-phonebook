@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 
-// Імпорт компонентів
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
 
-// Імпорт стилів
 import css from '../components/App.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
+
+  const dispath = useDispatch();
 
   useEffect(() => {
     const getData = localStorage.getItem('contacts');
@@ -50,7 +51,9 @@ const App = () => {
   };
 
   // Метод стягування данних при пошуку
-  const onChange = evt => setFilter(evt.target.value);
+  const onChange = evt => {
+    setFilter(evt.target.value);
+  };
 
   return (
     <>
