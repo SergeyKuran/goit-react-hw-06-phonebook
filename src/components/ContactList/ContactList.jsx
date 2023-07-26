@@ -18,19 +18,20 @@ export const ContactList = () => {
   return (
     <div>
       <ul className={css.ul}>
-        {getVisibleContacts.map(({ id, name, number }) => (
-          <li key={id}>
-            {name}: {number}
-            <button
-              type="button"
-              onClick={() => {
-                dispatch(deleteContacts(id));
-              }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
+        {selector &&
+          getVisibleContacts.map(({ id, name, number }) => (
+            <li key={id}>
+              {name}: {number}
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(deleteContacts(id));
+                }}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
       </ul>
     </div>
   );
