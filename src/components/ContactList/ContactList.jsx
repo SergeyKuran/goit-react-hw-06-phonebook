@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 //  Імпорт стилів
 import css from '../ContactList/ContactList.module.css';
@@ -7,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContacts, getContacts } from 'redux/contactSlice';
 import { getFilter } from 'redux/filterSlice';
 // Компонеет для рендеру списку контактів
-const ContactList = () => {
+
+export const ContactList = () => {
   const { contacts } = useSelector(getContacts);
   const selector = useSelector(getFilter);
   const dispatch = useDispatch();
@@ -35,9 +35,3 @@ const ContactList = () => {
     </div>
   );
 };
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object.isRequired),
-};
-
-export default ContactList;

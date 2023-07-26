@@ -10,10 +10,8 @@ import Notiflix from 'notiflix';
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const contacts = useSelector(getContacts());
   const dispath = useDispatch();
   const { contacts } = useSelector(getContacts);
-  console.log(contacts);
 
   //  Метод зв'язки данних імпуту зі стейтом
   const handleChange = evt => {
@@ -84,5 +82,3 @@ export const ContactForm = () => {
     </form>
   );
 };
-
-export default ContactForm;

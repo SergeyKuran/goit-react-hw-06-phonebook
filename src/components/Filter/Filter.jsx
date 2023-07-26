@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterName, getFilter } from 'redux/filterSlice';
 
 // Компонент для пошуку, фільтрації данних при введені у інпут
-const Filter = () => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const selector = useSelector(getFilter);
   return (
@@ -19,5 +19,3 @@ const Filter = () => {
     </label>
   );
 };
-
-export default Filter;

@@ -1,11 +1,7 @@
-// Імпорт компонентів
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
-
-// Імпорт стилів
 import css from '../components/App.module.css';
-// import { useDispatch } from 'react-redux';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 const App = () => {
   return (
