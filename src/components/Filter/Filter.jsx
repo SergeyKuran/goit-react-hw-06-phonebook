@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterName, getFilter } from 'redux/filterSlice';
 
 // Компонент для пошуку, фільтрації данних при введені у інпут
-const Filter = ({ filter, onChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const { filter } = useSelector(getFilter);
+  const changeValue = e => dispatch(filterName(e.target.value));
   return (
     <label>
       Find contact by name
-      <input type="text" value={filter} onChange={onChange} />
+      <input type="text" value={filter} onChange={changeValue} />
     </label>
   );
 };
