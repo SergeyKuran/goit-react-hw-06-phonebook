@@ -1,13 +1,19 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
 
 // Імпорт стилів
 import css from '../ContactForm/ContactForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContacts, getContacts } from 'redux/contactSlice';
+import Notiflix from 'notiflix';
 
 // Клас для відображення форми
-const ContactForm = ({ onSubmit }) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  // const contacts = useSelector(getContacts());
+  const dispath = useDispatch();
+  const { contacts } = useSelector(getContacts);
+  console.log(contacts);
 
   //  Метод зв'язки данних імпуту зі стейтом
   const handleChange = evt => {
@@ -26,18 +32,19 @@ const ContactForm = ({ onSubmit }) => {
         break;
     }
   };
-
   //  Метод для форми
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    //Передача об'єкта у пропси у головний компонент
-    onSubmit({
-      id: nanoid(),
-      name: name,
-      number: number,
-    });
+    const find = contacts.find(
+      el => el.name.toLowerCase() === name.toLowerCase()
+    );
+    if (find) {
+      return Notiflix.Notify.warning(`${name} is already in contacts`);
+    }
+    Notiflix.Notify.success('Operation success!');
 
+    dispath(addContacts(name, Number(number)));
     //Анулювання введених данних
     setName('');
     setNumber('');
